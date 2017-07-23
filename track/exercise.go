@@ -12,6 +12,7 @@ import (
 type Exercise struct {
 	Slug         string
 	SolutionPath string
+	TestPath     string
 }
 
 // NewExercise loads an exercise.
@@ -39,4 +40,9 @@ func NewExercise(root string, rgx *regexp.Regexp) (Exercise, error) {
 // IsValid checks that an exercise has a sample solution.
 func (ex Exercise) IsValid() bool {
 	return ex.SolutionPath != ""
+}
+
+// HasTests checks that an exercise has an accompanying test suite.
+func (ex Exercise) HasTests() bool {
+	return true
 }

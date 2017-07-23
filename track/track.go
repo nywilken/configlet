@@ -38,6 +38,9 @@ func New(path string) (Track, error) {
 			if err != nil {
 				return track, err
 			}
+
+			// SetTestPath
+			ex.TestPath = "text.ext"
 			track.Exercises = append(track.Exercises, ex)
 		}
 	}

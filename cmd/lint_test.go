@@ -81,6 +81,24 @@ func TestMissingSolution(t *testing.T) {
 	assert.Equal(t, "cherry", slugs[1])
 }
 
+func TestMissingTestSuite(t *testing.T) {
+	track := track.Track{
+		Exercises: []track.Exercise{
+			{Slug: "apple"},
+			{Slug: "banana"},
+			{Slug: "cherry"},
+		},
+	}
+
+	slugs := missingTestSuite(track)
+
+	if len(slugs) != 0 {
+		t.Fatalf("Expected missing test in 0 exercises, missing in %d", len(slugs))
+	}
+
+	assert.Equal(t, len(slugs), 0)
+}
+
 func TestForegoneViolations(t *testing.T) {
 	track := track.Track{
 		Config: track.Config{
