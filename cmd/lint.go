@@ -153,7 +153,7 @@ func missingSolution(t track.Track) []string {
 func missingTestSuite(t track.Track) []string {
 	testsuite := map[string]bool{}
 	for _, exercise := range t.Exercises {
-		testsuite[exercise.Slug] = exercise.HasTests()
+		testsuite[exercise.Slug] = exercise.HasTestSuite()
 	}
 	// Don't complain about missing testsuite in foregone exercises.
 	for _, slug := range t.Config.ForegoneSlugs {
