@@ -31,13 +31,17 @@ func New(path string) (Track, error) {
 		return track, err
 	}
 
-	rgx, err := regexp.Compile(track.Config.SolutionPattern)
+	srgx, _ := regexp.Compile(track.Config.SolutionPattern)
+	trgx, _ := regexp.Compile(track.Config.TestPattern)
 	for _, file := range files {
 		if file.IsDir() {
-			ex, err := NewExercise(filepath.Join(dir, file.Name()), rgx)
+			fp := filepath.Join(dir, file.Name())
+			ex, err := NewExercise(fp, srgx)
 			if err != nil {
 				return track, err
 			}
+
+			ex.LoadTestSuitePath(fp, trgx)
 			track.Exercises = append(track.Exercises, ex)
 		}
 	}

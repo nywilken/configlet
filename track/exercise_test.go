@@ -63,3 +63,43 @@ func TestExerciseSolutionPaths(t *testing.T) {
 		assert.Equal(t, test.solution, ex.SolutionPath)
 	}
 }
+func TestExerciseLoadTestSuitePath(t *testing.T) {
+	tests := []struct {
+		pattern   string
+		testsuite string
+	}{
+		{
+			// Default pattern finds files in a subdirectory named tests.
+			pattern:   "(?i)test",
+			testsuite: "tests/file.ext",
+		},
+		{
+			// It finds files with an exact match.
+			pattern:   "[^_]+_test.ext$",
+			testsuite: "fake_test.ext",
+		},
+		{
+			// It finds files in a subdirectory.
+			pattern:   "secret",
+			testsuite: "subdir/.secret-solution.ext",
+		},
+	}
+
+	for _, test := range tests {
+		path := filepath.FromSlash("../fixtures/fake-exercise")
+
+		rgx, err := regexp.Compile("[Ee]xample")
+		assert.NoError(t, err)
+
+		ex, err := NewExercise(path, rgx)
+		assert.NoError(t, err)
+
+		trgx, err := regexp.Compile(test.pattern)
+		assert.NoError(t, err)
+
+		err = ex.LoadTestSuitePath(path, trgx)
+		assert.NoError(t, err)
+
+		assert.Equal(t, test.testsuite, ex.TestSuitePath)
+	}
+}
