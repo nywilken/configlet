@@ -6,7 +6,7 @@ and effort making things better.
 
 ## Dependencies
 
-You'll need Go version 1.8 or higher. Follow the directions on
+You'll need Go version 1.9 or higher. Follow the directions on
 http://golang.org/doc/install
 
 ## Development
