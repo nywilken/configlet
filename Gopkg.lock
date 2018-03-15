@@ -17,7 +17,7 @@
   branch = "nextercism"
   name = "github.com/exercism/cli"
   packages = ["cli"]
-  revision = "63dae2f74c28b9bcfaf1920dd57603c3b8971b4b"
+  revision = "ec5424a76f239fd3dbc31d09440ccf9da562b982"
 
 [[projects]]
   name = "github.com/google/uuid"
@@ -40,7 +40,11 @@
 [[projects]]
   branch = "master"
   name = "github.com/inconshreveable/go-update"
-  packages = [".","internal/binarydist","internal/osext"]
+  packages = [
+    ".",
+    "internal/binarydist",
+    "internal/osext"
+  ]
   revision = "8152e7eb6ccf8679a64582a66b78519688d156ad"
 
 [[projects]]
@@ -59,7 +63,7 @@
   branch = "master"
   name = "github.com/spf13/cobra"
   packages = ["."]
-  revision = "a1e4933ab784095895e33dbe9f001ba10cfe2060"
+  revision = "c6c44e6fdcc30161c7f4480754da7230d01c06e3"
 
 [[projects]]
   name = "github.com/spf13/pflag"
